@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="d1e541b1af114367927b067984c525db" Name="Diagram1">
+        <EntityTypeShape EntityType="CNPM_QLNGKModel.Account" Width="1.5" PointX="5.75" PointY="5.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="CNPM_QLNGKModel.Bill" Width="1.5" PointX="3" PointY="1.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="CNPM_QLNGKModel.BillInfo" Width="1.5" PointX="5.25" PointY="1.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="CNPM_QLNGKModel.BookedTable" Width="1.5" PointX="3" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="CNPM_QLNGKModel.Drink" Width="1.5" PointX="3" PointY="8.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="CNPM_QLNGKModel.DrinkCategory" Width="1.5" PointX="0.75" PointY="9.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="CNPM_QLNGKModel.Employee" Width="1.5" PointX="3" PointY="11.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="CNPM_QLNGKModel.Food" Width="1.5" PointX="3" PointY="14.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="CNPM_QLNGKModel.FoodCategory" Width="1.5" PointX="0.75" PointY="15" IsExpanded="true" />
+        <EntityTypeShape EntityType="CNPM_QLNGKModel.sysdiagram" Width="1.5" PointX="7.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="CNPM_QLNGKModel.Table" Width="1.5" PointX="0.75" PointY="3.375" IsExpanded="true" />
+        <AssociationConnector Association="CNPM_QLNGKModel.FK_Bill_Table" ManuallyRouted="false" />
+        <AssociationConnector Association="CNPM_QLNGKModel.FK_BillInfo_Bill" ManuallyRouted="false" />
+        <AssociationConnector Association="CNPM_QLNGKModel.FK_BillInfo_Drink" ManuallyRouted="false" />
+        <AssociationConnector Association="CNPM_QLNGKModel.FK_BillInfo_Employees" ManuallyRouted="false" />
+        <AssociationConnector Association="CNPM_QLNGKModel.FK_BillInfo_Food" ManuallyRouted="false" />
+        <AssociationConnector Association="CNPM_QLNGKModel.FK_BookedTable_Table" ManuallyRouted="false" />
+        <AssociationConnector Association="CNPM_QLNGKModel.FK_BookedTables_Table" ManuallyRouted="false" />
+        <AssociationConnector Association="CNPM_QLNGKModel.FK_Drink_DrinkCategory" ManuallyRouted="false" />
+        <AssociationConnector Association="CNPM_QLNGKModel.FK_Food_FoodCategory" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

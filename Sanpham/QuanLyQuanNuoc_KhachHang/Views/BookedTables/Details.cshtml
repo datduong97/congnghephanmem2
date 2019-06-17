@@ -1,0 +1,73 @@
+﻿@model QuanLyQuanNuoc.Models.BookedTable
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<center><h1>Đặt bàn thành công</h1></center>
+
+<div>
+    <hr />
+    <dl class="d-lg-inline">
+        <dt>
+            @Html.DisplayNameFor(model => model.CustomerName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CustomerName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CustomerPhone)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CustomerPhone)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CustomerAddress)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CustomerAddress)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.BookDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.BookDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.BookTimeStart)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.BookTimeStart)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.BookTimeEnd)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.BookTimeEnd)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Table.name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Table.name)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    
+</p>

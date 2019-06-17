@@ -1,0 +1,100 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - Quản lý quán nước</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    <style>
+        .menuitem{
+            background-color:#108Dc5;            
+        }
+        a {
+            color: white;            
+        }
+            a:hover {
+                color: gray;
+                text-decoration:none;
+            }
+    </style>
+</head>
+<body >
+    <div class="navbar navbar-inverse navbar-fixed-top" style="background-color:#0a6f9c;border:0px">
+        <div class="container">
+            <div class="navbar-header">
+                @Html.ActionLink("Quản lý quán nước", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                <div class="navbar-buttons navbar-header pull-right " role="navigation">
+                    <ul class="nav ace-nav">
+                        <li class="light-blue">
+                            <a data-toggle="dropdown" href="#" class="dropdown-toggle">                                
+                                <span class="user-info">
+                                    <small>Xin chào,</small>
+                                    @if (@Session["Username"] == null)
+                                    {
+                                        Response.Redirect("~/Login/Login");
+                                    }
+                                        else
+                                        {
+                                            @Session["Displayname"].ToString()
+                                                                            }
+                                </span>
+                                <i class="ace-icon fa fa-caret-down"></i>
+                            </a>
+                            <ul class="user-menu dropdown-menu-right dropdown-menu dropdown-yellow dropdown-caret dropdown-close">
+                                <li>
+                                    <a href="#">
+                                        <i class="ace-icon fa fa-user"></i>
+                                        Thông tin cá nhân
+                                    </a>
+                                </li>
+                                <li class="divider"></li>
+
+                                <li>
+                                    @Html.ActionLink("Đăng xuất", "Logout", "Login")                                                                                                                    
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>                
+            </div>
+        </div>
+    </div>
+    <div class="container-fluid body-content">
+        <div class="row " style="height:800px">
+            <div class="col-sm-2 menuitem">
+                <div class="navbar">
+                    <ul class="navbar-nav text-center" style="margin-top:20px;">
+                        <li class="nav nav-list ">@Html.ActionLink("Trang chủ", "Index", "Home")</li>
+                        <li class="nav nav-list ">@Html.ActionLink("Thực đơn món ăn", "Index", "Foods")</li>
+                        <li class="nav nav-list ">@Html.ActionLink("Thực đơn đồ uống", "Index", "Drinks")</li>
+                        <li class="nav nav-list ">@Html.ActionLink("Danh mục đồ uống", "Index", "DrinkCategories")</li>
+                        <li class="nav nav-list ">@Html.ActionLink("Danh mục món ăn", "Index", "FoodCategories")</li>
+                        <li class="nav nav-list ">@Html.ActionLink("Đặt bàn", "Index", "BookedTables")</li>
+                        <li class="nav nav-list ">@Html.ActionLink("Tài khoản", "Index", "Accounts")</li>
+                        <li class="nav nav-list ">@Html.ActionLink("Bàn", "Index", "Tables")</li>
+                        <li class="nav nav-list ">@Html.ActionLink("Nhân viên", "Index", "Employees")</li>
+                        <li class="nav nav-list ">@Html.ActionLink("Bills", "Index", "Bills")</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-sm-10">
+                @RenderBody()
+            </div>
+        </div>
+        <footer style="text-align:center">
+            <p>&copy; @DateTime.Now.Year - Quản lý quán nước</p>
+        </footer> 
+    </div>
+   
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+
+</html>

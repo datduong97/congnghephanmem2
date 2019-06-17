@@ -1,0 +1,267 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="CNPM_QLNGKModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Account">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Username" Type="nvarchar" MaxLength="100" />
+    <Property Name="DisplayName" Type="nvarchar" MaxLength="100" />
+    <Property Name="Password" Type="nvarchar" MaxLength="100" />
+    <Property Name="Type" Type="int" />
+  </EntityType>
+  <EntityType Name="Bill">
+    <Key>
+      <PropertyRef Name="idBill" />
+    </Key>
+    <Property Name="idBill" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="DateCheckIn" Type="date" Nullable="false" />
+    <Property Name="DateCheckOut" Type="date" />
+    <Property Name="idTable" Type="int" Nullable="false" />
+    <Property Name="status" Type="int" Nullable="false" />
+    <Property Name="discount" Type="int" />
+    <Property Name="totalPrice" Type="float" />
+  </EntityType>
+  <EntityType Name="BillInfo">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="idBill" Type="int" Nullable="false" />
+    <Property Name="idFood" Type="int" Nullable="false" />
+    <Property Name="idDrink" Type="int" />
+    <Property Name="count" Type="float" Nullable="false" />
+    <Property Name="idEmp" Type="nvarchar" MaxLength="25" />
+  </EntityType>
+  <EntityType Name="BookedTable">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="idTable" Type="int" />
+    <Property Name="CustomerName" Type="nvarchar" MaxLength="30" />
+    <Property Name="CustomerPhone" Type="nchar" MaxLength="12" />
+    <Property Name="CustomerAddress" Type="nvarchar" MaxLength="60" />
+    <Property Name="BookDate" Type="nchar" MaxLength="10" />
+    <Property Name="BookTimeStart" Type="nchar" MaxLength="10" />
+    <Property Name="BookTimeEnd" Type="nchar" MaxLength="10" />
+  </EntityType>
+  <EntityType Name="Drink">
+    <Key>
+      <PropertyRef Name="idDrink" />
+    </Key>
+    <Property Name="idDrink" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="name" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="idCategoryDrink" Type="int" Nullable="false" />
+    <Property Name="price" Type="int" Nullable="false" />
+    <Property Name="image" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="DrinkCategory">
+    <Key>
+      <PropertyRef Name="idCategoryDrink" />
+    </Key>
+    <Property Name="idCategoryDrink" Type="int" Nullable="false" />
+    <Property Name="name" Type="nvarchar" MaxLength="100" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Employees">
+    <Key>
+      <PropertyRef Name="idEmp" />
+    </Key>
+    <Property Name="idEmp" Type="nvarchar" MaxLength="25" Nullable="false" />
+    <Property Name="name" Type="nvarchar" MaxLength="50" />
+    <Property Name="address" Type="nvarchar" MaxLength="60" />
+    <Property Name="phone" Type="char" MaxLength="10" />
+  </EntityType>
+  <EntityType Name="Food">
+    <Key>
+      <PropertyRef Name="idFood" />
+    </Key>
+    <Property Name="idFood" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="name" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="idCategoryFood" Type="int" Nullable="false" />
+    <Property Name="price" Type="int" Nullable="false" />
+    <Property Name="image" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="FoodCategory">
+    <Key>
+      <PropertyRef Name="idCategoryFood" />
+    </Key>
+    <Property Name="idCategoryFood" Type="int" Nullable="false" />
+    <Property Name="name" Type="nvarchar" MaxLength="100" Nullable="false" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="principal_id" Type="int" Nullable="false" />
+    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="version" Type="int" />
+    <Property Name="definition" Type="varbinary(max)" />
+  </EntityType>
+  <EntityType Name="Table">
+    <Key>
+      <PropertyRef Name="idTable" />
+    </Key>
+    <Property Name="idTable" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="name" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="status" Type="bit" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_Bill_Table">
+    <End Role="Table" Type="Self.Table" Multiplicity="1" />
+    <End Role="Bill" Type="Self.Bill" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Table">
+        <PropertyRef Name="idTable" />
+      </Principal>
+      <Dependent Role="Bill">
+        <PropertyRef Name="idTable" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_BillInfo_Bill">
+    <End Role="Bill" Type="Self.Bill" Multiplicity="1" />
+    <End Role="BillInfo" Type="Self.BillInfo" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Bill">
+        <PropertyRef Name="idBill" />
+      </Principal>
+      <Dependent Role="BillInfo">
+        <PropertyRef Name="idBill" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_BillInfo_Drink">
+    <End Role="Drink" Type="Self.Drink" Multiplicity="0..1" />
+    <End Role="BillInfo" Type="Self.BillInfo" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Drink">
+        <PropertyRef Name="idDrink" />
+      </Principal>
+      <Dependent Role="BillInfo">
+        <PropertyRef Name="idDrink" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_BillInfo_Employees">
+    <End Role="Employees" Type="Self.Employees" Multiplicity="0..1" />
+    <End Role="BillInfo" Type="Self.BillInfo" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Employees">
+        <PropertyRef Name="idEmp" />
+      </Principal>
+      <Dependent Role="BillInfo">
+        <PropertyRef Name="idEmp" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_BillInfo_Food">
+    <End Role="Food" Type="Self.Food" Multiplicity="1" />
+    <End Role="BillInfo" Type="Self.BillInfo" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Food">
+        <PropertyRef Name="idFood" />
+      </Principal>
+      <Dependent Role="BillInfo">
+        <PropertyRef Name="idFood" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_BookedTable_Table">
+    <End Role="Table" Type="Self.Table" Multiplicity="0..1" />
+    <End Role="BookedTable" Type="Self.BookedTable" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Table">
+        <PropertyRef Name="idTable" />
+      </Principal>
+      <Dependent Role="BookedTable">
+        <PropertyRef Name="idTable" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_BookedTables_Table">
+    <End Role="Table" Type="Self.Table" Multiplicity="0..1" />
+    <End Role="BookedTable" Type="Self.BookedTable" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Table">
+        <PropertyRef Name="idTable" />
+      </Principal>
+      <Dependent Role="BookedTable">
+        <PropertyRef Name="idTable" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Drink_DrinkCategory">
+    <End Role="DrinkCategory" Type="Self.DrinkCategory" Multiplicity="1" />
+    <End Role="Drink" Type="Self.Drink" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DrinkCategory">
+        <PropertyRef Name="idCategoryDrink" />
+      </Principal>
+      <Dependent Role="Drink">
+        <PropertyRef Name="idCategoryDrink" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Food_FoodCategory">
+    <End Role="FoodCategory" Type="Self.FoodCategory" Multiplicity="1" />
+    <End Role="Food" Type="Self.Food" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="FoodCategory">
+        <PropertyRef Name="idCategoryFood" />
+      </Principal>
+      <Dependent Role="Food">
+        <PropertyRef Name="idCategoryFood" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="CNPM_QLNGKModelStoreContainer">
+    <EntitySet Name="Account" EntityType="Self.Account" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Bill" EntityType="Self.Bill" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="BillInfo" EntityType="Self.BillInfo" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="BookedTable" EntityType="Self.BookedTable" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Drink" EntityType="Self.Drink" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="DrinkCategory" EntityType="Self.DrinkCategory" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Employees" EntityType="Self.Employees" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Food" EntityType="Self.Food" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="FoodCategory" EntityType="Self.FoodCategory" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Table" EntityType="Self.Table" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_Bill_Table" Association="Self.FK_Bill_Table">
+      <End Role="Table" EntitySet="Table" />
+      <End Role="Bill" EntitySet="Bill" />
+    </AssociationSet>
+    <AssociationSet Name="FK_BillInfo_Bill" Association="Self.FK_BillInfo_Bill">
+      <End Role="Bill" EntitySet="Bill" />
+      <End Role="BillInfo" EntitySet="BillInfo" />
+    </AssociationSet>
+    <AssociationSet Name="FK_BillInfo_Drink" Association="Self.FK_BillInfo_Drink">
+      <End Role="Drink" EntitySet="Drink" />
+      <End Role="BillInfo" EntitySet="BillInfo" />
+    </AssociationSet>
+    <AssociationSet Name="FK_BillInfo_Employees" Association="Self.FK_BillInfo_Employees">
+      <End Role="Employees" EntitySet="Employees" />
+      <End Role="BillInfo" EntitySet="BillInfo" />
+    </AssociationSet>
+    <AssociationSet Name="FK_BillInfo_Food" Association="Self.FK_BillInfo_Food">
+      <End Role="Food" EntitySet="Food" />
+      <End Role="BillInfo" EntitySet="BillInfo" />
+    </AssociationSet>
+    <AssociationSet Name="FK_BookedTable_Table" Association="Self.FK_BookedTable_Table">
+      <End Role="Table" EntitySet="Table" />
+      <End Role="BookedTable" EntitySet="BookedTable" />
+    </AssociationSet>
+    <AssociationSet Name="FK_BookedTables_Table" Association="Self.FK_BookedTables_Table">
+      <End Role="Table" EntitySet="Table" />
+      <End Role="BookedTable" EntitySet="BookedTable" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Drink_DrinkCategory" Association="Self.FK_Drink_DrinkCategory">
+      <End Role="DrinkCategory" EntitySet="DrinkCategory" />
+      <End Role="Drink" EntitySet="Drink" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Food_FoodCategory" Association="Self.FK_Food_FoodCategory">
+      <End Role="FoodCategory" EntitySet="FoodCategory" />
+      <End Role="Food" EntitySet="Food" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

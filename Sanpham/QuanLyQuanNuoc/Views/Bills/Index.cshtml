@@ -1,0 +1,64 @@
+﻿@model IEnumerable<QuanLyQuanNuoc.Models.Bill>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Thông tin</h2>
+
+<p>
+    @Html.ActionLink("Thêm mới", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.DateCheckIn)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DateCheckOut)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.status)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.discount)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.totalPrice)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Table.name)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.DateCheckIn)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DateCheckOut)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.status)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.discount)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.totalPrice)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Table.name)
+        </td>
+        <td>
+            @Html.ActionLink("Sửa", "Edit", new { id=item.idBill }) |
+            @Html.ActionLink("Chi tiết", "Details", new { id=item.idBill }) |
+            @Html.ActionLink("Xóa", "Delete", new { id=item.idBill })
+        </td>
+    </tr>
+}
+
+</table>

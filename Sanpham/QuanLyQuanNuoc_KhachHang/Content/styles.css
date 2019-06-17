@@ -1,0 +1,49 @@
+﻿body {
+    background-image: linear-gradient(to right, #ED1C24, #FCEE21);
+    color: white;
+}
+
+a {
+    color: white
+}
+
+.nav-item {
+    background-image: linear-gradient(to right, #ED1C24, #F39c12);
+    height: 80px;
+    margin-left: 10px;
+    width: 100px;
+    border-style: dashed;
+    border-width: 1px;
+    box-shadow: 0 3px 3px 0 red;
+    margin-top: 5px;
+}
+
+a:hover {
+    color: white;
+}
+
+.nav-item:hover {
+    border-style: dashed;
+    border-width: 2px;
+}
+
+.item {
+    transition: all 1s ease;
+    -webkit-transition: all 1s ease;
+    -moz-transition: all 1s ease;
+    -o-transition: all 1s ease;
+}
+
+    .item:hover {
+        transform: scale(1.1,1.1);
+        -webkit-transform: scale(1.1,1.1);
+        -moz-transform: scale(1.1,1.1);
+        -o-transform: scale(1.1,1.1);
+        -ms-transform: scale(1.1,1.1);
+    }
+
+.headertitle {
+    border-style: solid;
+    border-width: 2px;
+    border-bottom-color: white;
+}

@@ -1,0 +1,67 @@
+﻿@model QuanLyQuanNuoc.Models.Bill
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Chi tiết</h2>
+
+<div>
+    @*<h4>Bill</h4>*@
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.DateCheckIn)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DateCheckIn)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DateCheckOut)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DateCheckOut)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.status)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.status)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.discount)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.discount)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.totalPrice)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.totalPrice)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Table.name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Table.name)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Sửa", "Edit", new { id = Model.idBill }) |
+    @Html.ActionLink("Trở về", "Index")
+</p>

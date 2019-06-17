@@ -1,0 +1,27 @@
+﻿.carousel-inner img {
+    width: 100%;
+    height: 100%;
+}
+
+body {
+    color: white;
+    background-color: #ED1C24;
+}
+
+.color {
+    background-color: #ED1C24;
+    margin-bottom: 20px
+}
+
+.jumbotron {
+    background-image: linear-gradient(to right, #ED1C24, #FCEE21);
+}
+
+a {
+    color: white;
+    font-size: 20px
+}
+
+    a:hover {
+        color: sandybrown;
+    }

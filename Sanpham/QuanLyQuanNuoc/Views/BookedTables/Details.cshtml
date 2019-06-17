@@ -1,0 +1,83 @@
+﻿@model QuanLyQuanNuoc.Models.BookedTable
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Chi tiết</h2>
+
+<div>
+    @*<h4>BookedTable</h4>*@
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.CustomerName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CustomerName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CustomerPhone)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CustomerPhone)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CustomerAddress)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CustomerAddress)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.BookDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.BookDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.BookTimeStart)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.BookTimeStart)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.BookTimeEnd)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.BookTimeEnd)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Table.name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Table.name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Table1.name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Table1.name)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Sửa", "Edit", new { id = Model.id }) |
+    @Html.ActionLink("Trở về", "Index")
+</p>

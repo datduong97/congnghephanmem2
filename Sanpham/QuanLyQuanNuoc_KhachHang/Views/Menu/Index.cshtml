@@ -1,0 +1,81 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title>Menu</title>
+    <meta charset="utf-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="~/Content/styles.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+
+    <style>
+        body {
+            position: relative;
+            color:white;
+        }
+        a{
+            color:white;
+        }
+    </style>
+    <link rel="stylesheet" type="text/css" href="~/css/styles.css">
+</head>
+<body data-spy="scroll" data-target=".navbar" data-offset="50">
+    <div>
+        <ul class="nav justify-content-right flex-column fixed-top" style="font-size:20px;">
+            <li class="nav-item">
+                <a class="nav-link " href="#section0"><p>Đồ uống</p></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link " href="#section1"><p>Thức ăn</p></a>
+            </li>
+
+        </ul>
+    </div>
+    <div class="container-fluid text-center" style="margin-top:100px">
+        <div id="section0">
+            @foreach (var cd in ViewBag.DrinkCategories)
+            {
+                <h1>@cd.name</h1>
+                <hr>
+                <div class="row">
+                    @foreach (var drink in ViewBag.Drink)
+                    {
+                        if (cd.idCategoryDrink == drink.idCategoryDrink)
+                        {
+                            <div class="col-sm-4 item">
+                                <img src="~/images/@drink.image" class="img-thumbnail" alt="Cinque Terre" width="200"><h2>@drink.name</h2><p class="price">@drink.price</p>
+                            </div>
+                        }
+                    }
+                </div>
+            }
+
+        </div>
+        <div id="section1">
+            @foreach (var cf in ViewBag.FoodCategories)
+            {
+                <h1>@cf.name</h1>
+                <hr>
+                <div class="row">
+                    @foreach (var food in ViewBag.Food)
+                    {
+                        if (cf.idCategoryFood == food.idCategoryFood)
+                        {
+                            <div class="col-sm-4 item">
+                                <img src="~/images/@food.image" class="img-thumbnail" alt="Cinque Terre" width="200"><h2>@food.name</h2><p class="price">@food.price</p>
+                            </div>
+                        }
+                    }
+                </div>
+            }
+        </div>
+
+    </div>
+
+</body>
+</html>
